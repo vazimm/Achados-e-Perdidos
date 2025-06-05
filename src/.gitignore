@@ -1,0 +1,41 @@
+# Compiled bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Outros arquivos desnecessários
+*.log
+
+# Distribuição, build e pacotes
+build/
+dist/
+*.egg-info/
+
+# Ambientes virtuais
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Arquivos de log e cache do pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Relatórios e diretórios de testes
+htmlcov/
+.tox/
+.nox/
+
+# Arquivos temporários do sistema
+*.swp
+*.swo
+.DS_Store
+
+# Arquivos de configuração local
+*.env
+
+# Pasta instance do Flask (contém banco de dados e configurações locais)
+instance/
+*.db
+*.sqlite3

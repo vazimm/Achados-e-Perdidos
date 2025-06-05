@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard do Usuário</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style_user.css') }}"
+        />
+    </head>
+    <body>
+        <header>
+            <h1>Bem-vindo, {{ user.name }}!</h1>
+        </header>
+        <main>
+            <section class="info-card">
+                <div class="text">
+                    <h1>Plataforma Municipal: Achados e Perdidos</h1>
+                    <p>
+                        Plataforma Municipal de Achados e Perdidos de Minas
+                        Gerais. <br />
+                        Aqui você pode solicitar reaver pertences perdidos que
+                        foram <br />
+                        cadastrados no sistema, você irá conseguir acessar uma
+                        lista do <br />registro de todos os itens encontrados
+                        por nossos Funcionários <br />em
+                        <strong>Recuperar Item</strong>. Caso não encontre seu
+                        item pode ser que<br />
+                        ainda não o tenhamos registrado no sistema.
+                    </p>
+                </div>
+                <div class="image">
+                    <img
+                        src="{{ url_for('static', filename='images/Brasão_BH.png') }}"
+                        alt="Brasão de BH"
+                    />
+                </div>
+                <div class="actions">
+                    <a
+                        href="{{ url_for('dashboard.recuperar_pertence') }}"
+                        class="btn"
+                        >Recuperar Item</a
+                    >
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

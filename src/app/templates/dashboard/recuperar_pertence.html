@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Solicitar recuperação do Objeto</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style_request.css') }}"
+        />
+    </head>
+    <body>
+        <header>
+            <h1>Solicitar recuperação do Objeto</h1>
+        </header>
+        <main>
+            <form
+                method="POST"
+                action="{{ url_for('dashboard.submit_request_item') }}"
+            >
+                <button type="submit">Enviar Solicitação</button>
+            </form>
+        </main>
+    </body>
+</html>

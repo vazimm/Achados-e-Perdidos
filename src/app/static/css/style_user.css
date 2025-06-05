@@ -1,0 +1,89 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* Cor de fundo do painel do usuário */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+}
+
+header h1 {
+    margin: 1rem 0;
+    color: #1a1a1a;
+    /* Cor do título do painel, mais escura */
+}
+
+.info-card {
+    position: relative;
+    /* necessário para posicionar os elementos absolutos dentro do card */
+    background-color: rgba(143, 170, 195, 0.8);
+    /* tom azul/cinza semi-transparente */
+    backdrop-filter: blur(10px);
+    /* efeito fosco */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: flex-start;
+    /* Alinha o conteúdo ao topo */
+    justify-content: space-between;
+}
+
+.info-card .text {
+    flex: 1;
+    color: #1a1a1a;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    text-align: left;
+    /* Alinha o texto à esquerda */
+    line-height: 1.5;
+    /* espaçamento uniforme entre linhas */
+}
+
+.info-card .text p {
+    font-size: 1.3rem;
+    /* aumenta um pouco o tamanho da fonte dos parágrafos */
+}
+
+.info-card .image {
+    flex: 1;
+    max-width: 500px;
+    /* valor aumentado para 400px */
+}
+
+.info-card .image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Seção de ações */
+.actions {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(241, 196, 15, 0.8);
+    /* amarelo urbano semi-transparente */
+    backdrop-filter: blur(4px);
+    color: #333;
+    /* texto escuro para bom contraste */
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: rgba(241, 196, 15, 1);
+}

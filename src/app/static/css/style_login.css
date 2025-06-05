@@ -1,0 +1,82 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* Fundo escuro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form_loginAndRegister {
+    background-color: rgba(143, 170, 195, 0.8);
+    /* tom azul/cinza semi-transparente */
+    backdrop-filter: blur(10px);
+    /* efeito fosco */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+    width: 360px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+form div {
+    margin-bottom: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+    box-sizing: border-box;
+    /* Inclui o padding na largura total */
+}
+
+form button {
+    background-color: #007bff;
+    border: none;
+    padding: 0.8rem;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+form p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
