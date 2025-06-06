@@ -46,3 +46,11 @@ def register():
         flash('Registro bem-sucedido! Você pode fazer login agora.', 'success')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
+
+@AuthController.route('/logout')
+def logout():
+    # Remove os dados da sessão
+    session.pop('user_id', None)
+    session.pop('user_type', None)
+    flash('Você foi deslogado com sucesso.', 'info')
+    return redirect(url_for('auth.login'))

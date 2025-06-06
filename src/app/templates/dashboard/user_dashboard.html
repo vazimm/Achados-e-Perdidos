@@ -11,9 +11,13 @@
     </head>
     <body>
         <header>
-            <h1>Bem-vindo, {{ user.name }}!</h1>
+            <div class="header-content">
+                <h1>Bem-vindo, {{ user.name }}!</h1>
+                <a href="{{ url_for('auth.logout') }}" class="btn-logout">Sair</a>
+            </div>
         </header>
         <main>
+            
             <section class="info-card">
                 <div class="text">
                     <h1>Plataforma Municipal: Achados e Perdidos</h1>
