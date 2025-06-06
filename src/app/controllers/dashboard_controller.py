@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, redirect, url_for, session, flash, request
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request, current_app
 from app.models.user import User
 from app.models.item import Item  # Importa o modelo Item
-from app import db
-import datetime  # Importa o módulo datetime
+from app import db, mail  # Certifique-se de que mail é a instância do Flask-Mail
+import datetime
+from flask_mail import Message
 
 DashboardController = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
@@ -94,7 +95,47 @@ def recuperar_pertence():
 
 @DashboardController.route('/submit-request-item', methods=['POST'])
 def submit_request_item():
-    # Lógica para processar a solicitação de recuperação do objeto
-    # Após o processamento, exibe mensagem de sucesso e redireciona para o dashboard do usuário
-    flash('Solicitação enviada com sucesso!', 'success')
+    # Verifica se o usuário está logado
+    if 'user_id' not in session:
+        flash('Faça login para acessar o dashboard!', 'warning')
+        return redirect(url_for('auth.login'))
+    
+    # Recupera o usuário atual
+    user = User.query.get(session['user_id'])
+    
+    # Recupera o ID do item a partir do formulário
+    item_id = request.form.get('item_id')
+    if not item_id:
+        flash("Item não especificado.", "danger")
+        return redirect(url_for('dashboard.recuperar_pertence'))
+    
+    # Busca o item no banco de dados
+    item = Item.query.get(item_id)
+    if not item:
+        flash("Item não encontrado.", "danger")
+        return redirect(url_for('dashboard.recuperar_pertence'))
+    
+    # Monta a mensagem de e-mail utilizando os dados do item e do usuário em sessão
+    msg = Message(
+        subject="Solicitação de recuperação de item",
+        sender=current_app.config.get('MAIL_DEFAULT_SENDER'),  # Pode ser ajustado conforme a política do servidor de e-mails
+        recipients=[current_app.config.get('ADMIN_EMAIL')]  # Endereço administrativo configurado na aplicação
+    )
+    
+    msg.body = f"""
+Email: {user.email}
+Nome: {user.name}
+
+Assunto: Recuperar item
+
+ID do item: {item.id}
+Data que foi encontrado: {item.item_date.strftime('%Y-%m-%d')}
+Horário: {item.item_encontrado_time.strftime('%H:%M')}
+Funcionário: {item.funcionario}
+Descrição: {item.item_description}
+"""
+    # Envia o e-mail
+    mail.send(msg)
+    
+    flash("Solicitação enviada com sucesso!", "success")
     return redirect(url_for('dashboard.user_dashboard'))
