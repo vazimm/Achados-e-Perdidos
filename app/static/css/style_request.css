@@ -1,0 +1,267 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Novo estilo para o header */
+header {
+    width: 85%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background-color: rgba(241, 196, 15, 0.9);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout:hover {
+    background-color: rgba(241, 196, 15, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #1a1a1a;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(143, 170, 195, 0.8);
+    /* mesmo padrão dos cards */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+}
+
+form div {
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #1a1a1a;
+}
+
+form span {
+    font-size: 1.1rem;
+    color: #00bcd4;
+    margin-left: 0.5rem;
+}
+
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #e0e0e0;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    color: #1a1a1a;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+}
+
+fieldset legend {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+fieldset div {
+    margin-bottom: 0.5rem;
+}
+
+fieldset input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: rgba(241, 196, 15, 0.8);
+    /* amarelo urbano semi-transparente */
+    border: none;
+    border-radius: 4px;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: rgba(241, 196, 15, 1);
+}
+
+select {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #e0e0e0;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%231a1a1a' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    background-color: #e0e0e0;
+}
+
+input[type="checkbox"]:checked {
+    background-color: rgba(241, 196, 15, 0.8);
+    border: none;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 0;
+    left: 3px;
+    color: #333;
+    font-size: 14px;
+}
+
+fieldset div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+fieldset label {
+    cursor: pointer;
+}
+/* Estilos adicionais para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: #2c3e50;
+}
+
+th {
+    background-color: rgba(143, 170, 195, 0.9);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background-color: rgba(241, 196, 15, 0.1);
+}
+
+button[type="submit"] {
+    padding: 8px 16px;
+    background-color: rgba(241, 196, 15, 0.9);
+    color: #2c3e50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+button[type="submit"]:hover {
+    background-color: rgba(241, 196, 15, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes no layout principal */
+main {
+    width: 85%;
+    max-width: 1200px;
+    background-color: rgba(143, 170, 195, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Melhorias no header */
+.header-content h1 {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-logout, button[type="submit"] {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
