@@ -42,8 +42,11 @@ def admin_dashboard():
     if user.user_type != 'admin':
         return redirect(url_for('dashboard.user_dashboard'))
     
-    # Renderiza o template do dashboard de admin, passando o usuário
-    return render_template('dashboard/admin_dashboard.html', user=user)
+    # Buscar todos os itens no banco de dados
+    items = Item.query.all()
+
+    # Renderiza o template, passando o usuário e os itens
+    return render_template('dashboard/admin_dashboard.html', user=user, items=items)
 
 #Novo item
 @DashboardController.route('/admin/new_item', methods=['GET', 'POST'])
@@ -106,10 +109,24 @@ def new_item():
 
 @DashboardController.route('/recuperar_pertence')
 def recuperar_pertence():
-    # Busca todos os items registrados no banco de dados
-    items = Item.query.all()
+     # Busca apenas os itens ativos (não devolvidos)
+    items = Item.query.filter_by(ativo=True).all()
     # Renderiza o template e passa a lista de items
     return render_template('dashboard/recuperar_pertence.html', items=items)
+
+@DashboardController.route('/admin/hide_item', methods=['POST'])
+def hideen_item():
+    item_id = request.form.get('item_id')
+
+    item = Item.query.get(item_id)
+    if item:
+        item.ativo = False
+        db.session.commit()
+        flash(f'Item #{item.id} marcado como devolvido.', 'success')
+    else:
+        flash('Item não encontrado.', 'danger')
+
+    return redirect(url_for('dashboard.admin_dashboard'))
 
 @DashboardController.route('/submit-request-item', methods=['POST'])
 def submit_request_item():

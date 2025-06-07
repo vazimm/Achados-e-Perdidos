@@ -6,42 +6,72 @@
         <title>Painel do Administrador</title>
         <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='css/style_admin.css') }}"
+            href="{{ url_for('static', filename='css/style_request.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style_btn.css') }}"
         />
     </head>
     <body>
         <header>
-            <h1>Painel do Administrador</h1>
+            <div class="header-content">
+                <h1>Lista de Perdidos</h1>
+            </div>
         </header>
         <main>
-            <section>
-                <h2>Gerenciar Usuários</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Email</th>
-                            <th>Tipo</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.tipo }}</td>
-                            <td>
-                                <a href="/admin/edit/{{ user.id }}">Editar</a>
-                                <a href="/admin/delete/{{ user.id }}"
-                                    >Excluir</a
-                                >
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Funcionário</th>
+                        <th>Local</th>
+                        <th>Descrição</th>
+                        <th>Imagem</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.item_date.strftime('%d/%m/%Y') }}</td>
+                        <td>
+                            {{ item.item_encontrado_time.strftime('%H:%M') }}
+                        </td>
+                        <td>{{ item.funcionario }}</td>
+                        <td>{{ item.local }}</td>
+                        <td>{{ item.item_description }}</td>
+                        <td>
+                            {% if item.imagem_path %}
+                            <img
+                                src="{{ url_for('static', filename=item.imagem_path) }}"
+                                alt="Imagem do item"
+                                width="100"
+                            />
+                            {% else %}
+                            <span>Sem imagem</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form
+                                method="POST"
+                                action="{{ url_for('dashboard.hideen_item') }}"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="item_id"
+                                    value="{{ item.id }}"
+                                />
+                                <button type="submit">Item Devolvido</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             <div class="admin-actions">
                 <a href="{{ url_for('dashboard.new_item') }}" class="btn"
                     >Registrar novo item</a

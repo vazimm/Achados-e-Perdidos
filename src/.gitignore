@@ -41,4 +41,4 @@ instance/
 *.sqlite3
 
 # Ignorar uploads de imagens ou arquivos de usuário
-src/app/static/uploads/
+src/app/static/uploads/**
