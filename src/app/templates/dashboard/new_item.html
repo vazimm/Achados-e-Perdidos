@@ -13,7 +13,11 @@
             <h1>Adicionar Dados do Item Perdido</h1>
         </header>
         <main>
-            <form method="POST" action="{{ url_for('dashboard.new_item') }}">
+            <form
+                method="POST"
+                action="{{ url_for('dashboard.new_item') }}"
+                enctype="multipart/form-data"
+            >
                 <div>
                     <label for="item_date">Data:</label>
                     <input
@@ -44,6 +48,15 @@
                 <div>
                     <label for="local">Local:</label>
                     <input type="text" id="local" name="local" required />
+                </div>
+                <div>
+                    <label for="imagem">Imagem do item:</label>
+                    <input
+                        type="file"
+                        id="imagem"
+                        name="imagem"
+                        accept="image/*"
+                    />
                 </div>
                 <div>
                     <label for="item_description">Descrição do Item</label>

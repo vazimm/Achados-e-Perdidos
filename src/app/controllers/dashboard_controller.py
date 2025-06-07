@@ -1,9 +1,17 @@
+import os
 from flask import Blueprint, render_template, redirect, url_for, session, flash, request, current_app
 from app.models.user import User
 from app.models.item import Item  # Importa o modelo Item
+from werkzeug.utils import secure_filename
 from app import db, mail  # Certifique-se de que mail é a instância do Flask-Mail
 import datetime
 from flask_mail import Message
+
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 DashboardController = Blueprint('dashboard', __name__, url_prefix='/dashboard')
 
@@ -53,14 +61,12 @@ def new_item():
         return redirect(url_for('dashboard.user_dashboard'))
     
     if request.method == 'POST':
-        # Coleta os dados do formulário
-        item_date_str = request.form.get('item_date')  # Ex: '2025-06-06'
-        item_time_str = request.form.get('item_encontrado_time')  # Ex: '14:30'
+        item_date_str = request.form.get('item_date')
+        item_time_str = request.form.get('item_encontrado_time')
         funcionario = request.form.get('funcionario')
         local = request.form.get('local')
         item_description = request.form.get('item_description')
 
-        # Converte as strings para tipos apropriados
         try:
             date_obj = datetime.datetime.strptime(item_date_str, '%Y-%m-%d').date()
             time_obj = datetime.datetime.strptime(item_time_str, '%H:%M').time()
@@ -68,15 +74,27 @@ def new_item():
             flash('Formato de data ou hora inválido.', 'danger')
             return redirect(url_for('dashboard.new_item'))
 
-        # Cria uma instância de Item utilizando os dados do formulário
+        # Upload de imagem
+        imagem_file = request.files.get('imagem')
+        imagem_path = None
+
+        if imagem_file and allowed_file(imagem_file.filename):
+            filename = secure_filename(imagem_file.filename)
+            upload_folder = os.path.join(current_app.root_path, 'static', 'uploads')
+            os.makedirs(upload_folder, exist_ok=True)
+            full_path = os.path.join(upload_folder, filename)
+            imagem_file.save(full_path)
+            imagem_path = os.path.join('uploads', filename).replace('\\', '/')  # Garante que o caminho seja relativo e use barras corretas
+
         new_item_record = Item(
             item_date=date_obj,
             item_encontrado_time=time_obj,
             funcionario=funcionario,
             local=local,
-            item_description=item_description
+            item_description=item_description,
+            imagem_path=imagem_path
         )
-        # Adiciona o item na sessão e commita no banco de dados
+
         db.session.add(new_item_record)
         db.session.commit()
 

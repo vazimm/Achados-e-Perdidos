@@ -10,6 +10,7 @@ class Item(db.Model):
     funcionario = db.Column(db.String(100), nullable=False)
     local = db.Column(db.String(200), nullable=False)
     item_description = db.Column(db.Text, nullable=False)
+    imagem_path = db.Column(db.String(300), nullable=True)
 
     def __repr__(self):
         return f'<Item {self.id} - {self.item_description}>'
