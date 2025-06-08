@@ -160,6 +160,7 @@ def submit_request_item():
     msg.body = f"""
 Email: {user.email}
 Nome: {user.name}
+CPF: {user.cpf}
 
 Assunto: Recuperar item
 

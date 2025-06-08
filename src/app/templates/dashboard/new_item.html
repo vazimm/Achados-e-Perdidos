@@ -10,7 +10,14 @@
     </head>
     <body>
         <header>
-            <h1>Adicionar Dados do Item Perdido</h1>
+            <div class="header-content">
+                <h1 class="alinhamento">Adicionar Dados do Item Perdido</h1>
+                <a
+                    href="{{ url_for('dashboard.admin_dashboard') }}"
+                    class="btn-logout"
+                    >Voltar a Lista</a
+                >
+            </div>
         </header>
         <main>
             <form
