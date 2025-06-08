@@ -56,6 +56,7 @@
                             {% endif %}
                         </td>
                         <td>
+                            {% if item.ativo %}
                             <form
                                 method="POST"
                                 action="{{ url_for('dashboard.hideen_item') }}"
@@ -65,8 +66,13 @@
                                     name="item_id"
                                     value="{{ item.id }}"
                                 />
-                                <button type="submit">Item Devolvido</button>
+                                <button type="submit">Item devolvido</button>
                             </form>
+                            {% else %}
+                            <span style="color: green; font-weight: bold"
+                                >Item já devolvido</span
+                            >
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
