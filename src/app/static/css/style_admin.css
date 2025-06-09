@@ -21,6 +21,33 @@ header {
     margin-bottom: 2rem;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background-color: rgba(231, 76, 60, 0.9);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout:hover {
+    background-color: rgba(231, 76, 60, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
 header h1 {
     margin: 1rem 0;
 }
