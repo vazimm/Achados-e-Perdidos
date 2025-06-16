@@ -18,34 +18,35 @@ header h1 {
     font-size: 2.2rem;
 }
 /* Novo estilo para o header */
-header {
-    width: 85%;
-    max-width: 1000px;
+.cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    padding: 2rem 3rem;
+    background: transparent;
+    position: relative;
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.cabecalho h1 {
+    margin: 0 auto;
+    font-size: 2.2rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    text-align: center;
+    flex: 1;
 }
 
 .btn-logout {
-    padding: 8px 16px;
     background-color: rgba(231, 76, 60, 0.9);
     color: white;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
     text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-left: 20px; /* <<< AQUI adiciona o espaço */
 }
 
 .btn-logout:hover {
@@ -126,4 +127,58 @@ header {
     background-color: rgba(241, 196, 15, 1);
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+.site-footer {
+    background-color: rgba(40, 55, 71, 0.9);
+    color: #e0e0e0;
+    padding: 15px 0; /* Reduzi o padding vertical */
+    width: 100%;
+    margin-top: auto;
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    width: 85%;
+    max-width: 800px; /* Reduzi a largura máxima */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    gap: 10px;
+    text-align: center; /* Centraliza o texto */
+}
+
+.footer-brand p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.footer-links a {
+    color: #f1c40f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.clique:hover {
+    background-color: rgba(241, 196, 15, 0.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 85%;
+    max-width: 800px;
+    margin: 10px auto 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
 }

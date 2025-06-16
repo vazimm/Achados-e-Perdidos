@@ -10,14 +10,10 @@
         />
     </head>
     <body>
-        <header>
-            <div class="header-content">
+        <header class="page-header">
+            <div class="cabecalho">
                 <h1>Solicitar Recuperação do Objeto</h1>
-                <a
-                    href="{{ url_for('dashboard.user_dashboard') }}"
-                    class="btn-logout"
-                    >Voltar ao Dashboard</a
-                >
+                <a href="{{ url_for('dashboard.user_dashboard') }}" class="btn-dashboard">Voltar ao Dashboard</a>
             </div>
         </header>
         <main>
@@ -74,5 +70,24 @@
                 </tbody>
             </table>
         </main>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p>Caso não esteja aqui, tente estes achados e perdidos clicando neles.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="https://www2.correios.com.br/servicos/achados_perdidos/default.cfm" target="_blank" class="clique">CORREIOS</a>
+                    <a>|</a>
+                    <a href="https://rodoviariadebelohorizonte.com.br/achados-e-perdidos/" target="_blank" class="clique">RODOVIÁRIA BH</a>
+                    <a>|</a>
+                    <a href="https://www.metrobh.com.br/fale-com-a-gente/" target="_blank" class="clique">METRÔ BH</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Achados e Perdidos MG. Todos os direitos reservados.</p>
+            </div>
+        </footer>
     </body>
 </html>

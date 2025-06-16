@@ -10,9 +10,9 @@
         />
     </head>
     <body>
-        <header>
-            <div class="header-content">
-                <h1>Bem-vindo, {{ user.name }}!</h1>
+        <header class="page-header">
+            <div class="cabecalho">
+                <<h1>Bem-vindo, {{ user.name }}!</h1>
                 <a href="{{ url_for('auth.logout') }}" class="btn-logout">Sair</a>
             </div>
         </header>
@@ -49,5 +49,24 @@
                 </div>
             </section>
         </main>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p>Caso não esteja aqui, tente estes achados e perdidos clicando neles.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="https://www2.correios.com.br/servicos/achados_perdidos/default.cfm" target="_blank" class="clique">CORREIOS</a>
+                    <a>|</a>
+                    <a href="https://rodoviariadebelohorizonte.com.br/achados-e-perdidos/" target="_blank" class="clique">RODOVIÁRIA BH</a>
+                    <a>|</a>
+                    <a href="https://www.metrobh.com.br/fale-com-a-gente/" target="_blank" class="clique">METRÔ BH</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Achados e Perdidos MG. Todos os direitos reservados.</p>
+            </div>
+        </footer>
     </body>
 </html>
