@@ -17,6 +17,20 @@
             </div>
         </header>
         <main>
+            <div class="search-container">
+                <form class="search-form" method="GET" action="{{ url_for('dashboard.request_item') }}">
+                    <input 
+                        type="text" 
+                        name="search" 
+                        placeholder="Pesquisar por descrição ou local..." 
+                        value="{{ search_term if search_term }}"
+                    />
+                    <button type="submit">Buscar</button>
+                    {% if search_term %}
+                        <a href="{{ url_for('dashboard.request_item') }}" class="clear-search">Limpar</a>
+                    {% endif %}
+                </form>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -31,42 +45,50 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in items %}
-                    <tr>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.item_date.strftime('%d/%m/%Y') }}</td>
-                        <td>
-                            {{ item.item_encontrado_time.strftime('%H:%M') }}
-                        </td>
-                        <td>{{ item.funcionario }}</td>
-                        <td>{{ item.local }}</td>
-                        <td>{{ item.item_description }}</td>
-                        <td>
-                            {% if item.imagem_path %}
-                            <img
-                                src="{{ url_for('static', filename=item.imagem_path) }}"
-                                alt="Imagem do item"
-                                width="100"
-                            />
-                            {% else %}
-                            <span>Sem imagem</span>
-                            {% endif %}
-                        </td>
-                        <td>
-                            <form
-                                method="POST"
-                                action="{{ url_for('dashboard.submit_request_item') }}"
-                            >
-                                <input
-                                    type="hidden"
-                                    name="item_id"
-                                    value="{{ item.id }}"
+                    {% if items %}
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.item_date.strftime('%d/%m/%Y') }}</td>
+                            <td>
+                                {{ item.item_encontrado_time.strftime('%H:%M') }}
+                            </td>
+                            <td>{{ item.funcionario }}</td>
+                            <td>{{ item.local }}</td>
+                            <td>{{ item.item_description }}</td>
+                            <td>
+                                {% if item.imagem_path %}
+                                <img
+                                    src="{{ url_for('static', filename=item.imagem_path) }}"
+                                    alt="Imagem do item"
+                                    width="100"
                                 />
-                                <button type="submit">Solicitar</button>
-                            </form>
+                                {% else %}
+                                <span>Sem imagem</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form
+                                    method="POST"
+                                    action="{{ url_for('dashboard.submit_request_item') }}"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="item_id"
+                                        value="{{ item.id }}"
+                                    />
+                                    <button type="submit">Solicitar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="8" style="text-align: center;">
+                            Nenhum item encontrado {% if search_term %}para "{{ search_term }}"{% endif %}
                         </td>
                     </tr>
-                    {% endfor %}
+                {% endif %}
                 </tbody>
             </table>
         </main>

@@ -255,6 +255,7 @@ button[type="submit"] {
     font-weight: 500;
     transition: all 0.3s ease;
     font-size: 0.9rem;
+    color: #ffffff;
 }
 
 button[type="submit"]:hover {
@@ -342,4 +343,63 @@ main {
     margin: 0;
     font-size: 0.8rem;
     opacity: 0.8;
+}
+
+.search-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    gap: 5px; /* Espaço entre os elementos */
+}
+
+.search-form input[type="text"] {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    flex: 1; /* Ocupa todo o espaço disponível */
+    min-width: 200px; /* Largura mínima */
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: rgba(241, 196, 15, 1);
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: rgba(241, 196, 15, 1);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: auto; /* Largura automática baseada no conteúdo */
+    min-width: 80px; /* Largura mínima do botão */
+}
+
+.search-form button:hover {
+    background-color: rgba(241, 196, 15, 1);
+}
+
+.clear-search {
+    margin-left: 10px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    align-self: center; /* Alinha verticalmente com os outros elementos */
+    white-space: nowrap;
+}
+
+.clear-search:hover {
+    text-decoration: underline;
+    color: #333;
 }

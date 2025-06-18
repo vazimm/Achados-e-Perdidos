@@ -128,6 +128,31 @@ def hideen_item():
 
     return redirect(url_for('dashboard.admin_dashboard'))
 
+@DashboardController.route('/request-item')
+def request_item():
+    # Verifica se o usuário está logado
+    if 'user_id' not in session:
+        flash('Faça login para acessar esta página!', 'warning')
+        return redirect(url_for('auth.login'))
+    
+    search_term = request.args.get('search', '').strip()
+    
+    if search_term:
+        # Pesquisa tanto na descrição quanto no local (case insensitive)
+        items = Item.query.filter(
+            db.or_(
+                Item.item_description.ilike(f'%{search_term}%'),
+                Item.local.ilike(f'%{search_term}%')
+            ),
+            Item.ativo == True  # Mostra apenas itens ativos
+        ).all()
+    else:
+        # Busca apenas os itens ativos (não devolvidos)
+        items = Item.query.filter_by(ativo=True).all()
+    
+    return render_template('dashboard/recuperar_pertence.html', items=items, search_term=search_term)
+
+
 @DashboardController.route('/submit-request-item', methods=['POST'])
 def submit_request_item():
     # Verifica se o usuário está logado
